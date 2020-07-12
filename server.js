@@ -1,10 +1,15 @@
 
+// Dependencies
 var express = require("express");
 var mysql = require("mysql");
+var path = require("path"); // Allows to read html files
+
+// Instantiate Express
 var app = express();
 
 var PORT = process.env.PORT || 8001;
 
+// Create mysql connection
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
@@ -13,6 +18,7 @@ var connection = mysql.createConnection({
     database: "FriendFinder_DB"
 });
 
+// Instantiate mysql connection
 connection.connect(function(err){
     if(err){
         console.error(`Connection Error: ${err.stack}`);
@@ -25,8 +31,10 @@ connection.connect(function(err){
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-app.get("/", function(req,res) {
+app.get("/", function(req, res){
+    console.log("In Root Get");
     res.sendFile(path.join(__dirname,"index.html"));
+
 })
 
 app.post("/addFriend", function(req, res) {
@@ -37,7 +45,7 @@ app.post("/addFriend", function(req, res) {
     res.send(newFriend);
 })
 
-app.listen(PORT, function() {
+app.listen(PORT, function(){
     
     console.log(`Server Listening on: http://localhost:${PORT}`);
     
