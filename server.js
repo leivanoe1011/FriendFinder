@@ -37,6 +37,10 @@ app.get("/", function(req, res){
 
 })
 
+app.get("/survey", (req,res) => {
+    res.sendFile(path.join(__dirname, "survey.html"));
+})
+
 app.post("/addFriend", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
