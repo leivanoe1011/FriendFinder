@@ -41,12 +41,32 @@ app.get("/survey", (req,res) => {
     res.sendFile(path.join(__dirname, "survey.html"));
 })
 
-app.post("/addFriend", function(req, res) {
+app.post("/addfriend", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
+    console.log("In add friend POST");
+
     var newFriend = req.body;
 
-    res.send(newFriend);
+    console.log(newFriend);
+
+    var sqlQuery = `INSERT INTO friendFinder (person_name, image_link, question1,` + 
+                        ` question2, question3, question4, question5, question6,` + 
+                        ` question7, question8, question9, question10)` +
+                        ` VALUES("${newFriend.name}", "${newFriend.imageLink}",` +
+                        ` ${newFriend.question1}, ${newFriend.question2}, ${newFriend.question3},` +
+                        ` ${newFriend.question4}, ${newFriend.question5}, ${newFriend.question6},` +
+                        ` ${newFriend.question9}, ${newFriend.question8}, ${newFriend.question9},` +
+                        ` ${newFriend.question10});`
+
+    connection.query(sqlQuery, function(err,result){
+        if(err) throw err;
+        // res.send("Success, Added Item!");
+        res.sendFile(path.join(__dirname, "index.html"));
+    });
+
+    // res.send(newFriend);
+    // res.sendFile(path.join(__dirname, "index.html"));
 })
 
 app.listen(PORT, function(){

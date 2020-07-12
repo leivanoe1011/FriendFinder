@@ -25,3 +25,4 @@ CREATE TABLE friendFinder
     question10 INT NOT NULL
 )
 
+-- SELECT * FROM friendFinder
