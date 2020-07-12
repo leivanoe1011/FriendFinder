@@ -16,18 +16,15 @@
     <div class="container">
         <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <label for="friendNameId">Name (Required)</label>
+              <input type="text" class="form-control" id="friendNameId" aria-describedby="CompleteName" placeholder="Enter Full Name">
+              <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <label for="photoImageId">Link to Photo Image</label>
+              <input type="text" class="form-control" id="photoImageId" placeholder="Image Link">
             </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
+       
 
             <label class="my-1 mr-2" for="mindBuzzlingId">Your Mind is always buzzling with unexplored ideas and plans</label>
             <select class="custom-select my-1 mr-sm-2" id="mindBuzzlingId">
@@ -35,6 +32,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="experienceImaginationId">Generally speaking, you rely more on your experience than your imagination</label>
@@ -43,6 +42,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="focusUnderPressureId">You find it easy to stay relazed and focused even when there is some pressure</label>
@@ -51,6 +52,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="sheerCuriosityId">You rarely do something just out of sheer curiosity</label>
@@ -59,6 +62,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="upsetByPeopleId">People can rarely upset you</label>
@@ -67,6 +72,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="compasionateId">It is opten difficult for you to relate to other people's feelings</label>
@@ -75,6 +82,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="sensityTruthId">In a discussion, truth should be more important than people's sensitivity</label>
@@ -83,6 +92,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="ideasFantasiesId">You rarely get carried away by fantasies and ideas</label>
@@ -91,6 +102,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="opinionViewsId">You think that everyone's views should be respected regardles of whether they are supported by facts or not</label>
@@ -99,6 +112,8 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
             <label class="my-1 mr-2" for="groupEnergyId">You feel more energetic after spending time with a group of people</label>
@@ -107,13 +122,47 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="4">Four</option>
+                <option value="5">Five</option>
             </select>
 
 
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id="addFriendBtnId" type="submit" class="btn btn-primary">Submit</button>
           </form>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" 
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        $("#addFriendBtnId").on("click",function(event){
+            
+            event.preventDefault();
+
+            var newFriend = {
+                name: $("#friendNameId").val().trim(),
+                imageLink: $("#photoImageId").val().trim(),
+                question1: $("#mindBuzzlingId").val(),
+                question2: $("#experienceImaginationId").val(),
+                question3: $("#focusUnderPressureId").val(),
+                question4: $("#sheerCuriosityId").val(),
+                question5: $("#upsetByPeopleId").val(),
+                question6: $("#compasionateId").val(),
+                question7: $("#sensityTruthId").val(),
+                question8: $("#ideasFantasiesId").val(),
+                question9: $("#opinionViewsId").val(),
+                question10: $("#groupEnergyId").val()
+            };
+
+            
+        });
+        
+    
+    </script>
 
 </body>
 </html>
