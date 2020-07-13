@@ -23,6 +23,6 @@ CREATE TABLE friendFinder
     question8 INT NOT NULL, 
     question9 INT NOT NULL, 
     question10 INT NOT NULL
-)
+);
 
 -- SELECT * FROM friendFinder

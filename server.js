@@ -57,16 +57,14 @@ app.post("/addfriend", function(req, res) {
                         ` ${newFriend.question1}, ${newFriend.question2}, ${newFriend.question3},` +
                         ` ${newFriend.question4}, ${newFriend.question5}, ${newFriend.question6},` +
                         ` ${newFriend.question9}, ${newFriend.question8}, ${newFriend.question9},` +
-                        ` ${newFriend.question10});`
+                        ` ${newFriend.question10}); SELECT LAST_INSERT_ID();`
 
     connection.query(sqlQuery, function(err,result){
         if(err) throw err;
-        // res.send("Success, Added Item!");
-        res.sendFile(path.join(__dirname, "index.html"));
-    });
 
-    // res.send(newFriend);
-    // res.sendFile(path.join(__dirname, "index.html"));
+        
+        res.redirect(301,"/");
+    });
 })
 
 app.listen(PORT, function(){
