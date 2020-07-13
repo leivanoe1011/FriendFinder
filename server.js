@@ -15,7 +15,8 @@ var connection = mysql.createConnection({
     port: 3306,
     user: "root",
     password: "password",
-    database: "FriendFinder_DB"
+    database: "FriendFinder_DB",
+    multipleStatements: true // this must be enabled to run multiple queries at once
 });
 
 // Instantiate mysql connection
@@ -57,13 +58,18 @@ app.post("/addfriend", function(req, res) {
                         ` ${newFriend.question1}, ${newFriend.question2}, ${newFriend.question3},` +
                         ` ${newFriend.question4}, ${newFriend.question5}, ${newFriend.question6},` +
                         ` ${newFriend.question9}, ${newFriend.question8}, ${newFriend.question9},` +
-                        ` ${newFriend.question10}); SELECT LAST_INSERT_ID();`
+                        ` ${newFriend.question10});`
 
+    // 
+    sqlQuery += " SELECT * FROM friendFinder WHERE ID = ( SELECT GetBestFriendMatch(LAST_INSERT_ID()) );";
+    
     connection.query(sqlQuery, function(err,result){
         if(err) throw err;
+        console.log(result[0]);
+        console.log(result[1]);
+        // res.redirect(301,"/");
 
-        
-        res.redirect(301,"/");
+        res.send(result[1]);
     });
 })
 

@@ -26,3 +26,4 @@ CREATE TABLE friendFinder
 );
 
 -- SELECT * FROM friendFinder
+--  SELECT LAST_INSERT_ID() LAST_ID;

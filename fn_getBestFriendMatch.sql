@@ -1,9 +1,5 @@
 
--- Error Code: 1415. Not allowed to return a result set from a function
--- Error Code: 1418. This function has none of DETERMINISTIC, NO SQL, or 
--- READS SQL DATA in its declaration and binary logging is enabled 
--- (you *might* want to use the less safe log_bin_trust_function_creators variable)
-
+-- This would allow us to set a variable within the CTE
 SET GLOBAL log_bin_trust_function_creators = 1;
 
 
